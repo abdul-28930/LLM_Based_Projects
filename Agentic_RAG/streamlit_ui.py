@@ -22,7 +22,9 @@ from pydantic_ai.messages import (
     RetryPromptPart,
     ModelMessagesTypeAdapter
 )
-from pydantic_ai_expert import pydantic_ai_expert, PydanticAIDeps
+
+# Import from local ai_expert
+from ai_expert import pydantic_ai_expert, PydanticAIDeps
 
 # Load environment variables
 from dotenv import load_dotenv
@@ -39,11 +41,9 @@ logfire.configure(send_to_logfire='never')
 
 class ChatMessage(TypedDict):
     """Format of messages sent to the browser/API."""
-
     role: Literal['user', 'model']
     timestamp: str
     content: str
-
 
 def display_message_part(part):
     """
@@ -64,7 +64,6 @@ def display_message_part(part):
         with st.chat_message("assistant"):
             st.markdown(part.content)          
 
-
 async def run_agent_with_streaming(user_input: str):
     """
     Run the agent with streaming text for the user_input prompt,
@@ -80,7 +79,7 @@ async def run_agent_with_streaming(user_input: str):
     async with pydantic_ai_expert.run_stream(
         user_input,
         deps=deps,
-        message_history= st.session_state.messages[:-1],  # pass entire conversation so far
+        message_history=st.session_state.messages[:-1],  # pass entire conversation so far
     ) as result:
         # We'll gather partial text to show incrementally
         partial_text = ""
@@ -103,25 +102,22 @@ async def run_agent_with_streaming(user_input: str):
             ModelResponse(parts=[TextPart(content=partial_text)])
         )
 
-
 async def main():
-    st.title("Pydantic AI Agentic RAG")
-    st.write("Ask any question about Pydantic AI, the hidden truths of the beauty of this framework lie within.")
+    st.title("Pydantic AI Documentation Assistant")
+    st.write("Ask any question about Pydantic AI, and I'll help you understand it using the official documentation.")
 
     # Initialize chat history in session state if not present
     if "messages" not in st.session_state:
         st.session_state.messages = []
 
     # Display all messages from the conversation so far
-    # Each message is either a ModelRequest or ModelResponse.
-    # We iterate over their parts to decide how to display them.
     for msg in st.session_state.messages:
         if isinstance(msg, ModelRequest) or isinstance(msg, ModelResponse):
             for part in msg.parts:
                 display_message_part(part)
 
     # Chat input for the user
-    user_input = st.chat_input("What questions do you have about Pydantic AI?")
+    user_input = st.chat_input("What would you like to know about Pydantic AI?")
 
     if user_input:
         # We append a new request to the conversation explicitly
@@ -137,7 +133,6 @@ async def main():
         with st.chat_message("assistant"):
             # Actually run the agent now, streaming the text
             await run_agent_with_streaming(user_input)
-
 
 if __name__ == "__main__":
     asyncio.run(main())

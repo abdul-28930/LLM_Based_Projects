@@ -1,0 +1,14 @@
+discord.py==2.3.2
+python-dotenv==1.0.0
+faiss-cpu==1.7.4
+transformers==4.36.2
+torch==2.1.2
+numpy==1.24.3
+pandas==2.1.4
+SQLAlchemy==2.0.25
+python-dateutil==2.8.2
+tqdm==4.66.1
+deepseek-ai==0.4.0
+huggingface-hub==0.20.3
+sentencepiece==0.1.99
+colorama==0.4.6 
