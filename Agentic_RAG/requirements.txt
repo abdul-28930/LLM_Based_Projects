@@ -12,5 +12,4 @@ pydantic-ai==0.0.18
 python-dotenv==1.0.1
 requests==2.32.3
 streamlit==1.28.0
-supabase==2.11.0
-logfire
+supabase==2.11.0logfire

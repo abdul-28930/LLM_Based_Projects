@@ -218,20 +218,9 @@ def get_pydantic_ai_docs_urls() -> List[str]:
         "https://ai.pydantic.dev/sitemap.xml",
         "https://huggingface.co/sitemap.xml",
         "https://python.langchain.com/sitemap.xml",
-        "https://haystack.deepset.ai/sitemap.xml",
-        "https://docs.fast.ai/sitemap.xml",
-        "https://spacy.io/sitemap.xml",
-        "https://docs.ray.io/sitemap.xml",
-        "https://rasa.com/sitemap.xml",
-        "https://stability.ai/sitemap.xml",
-        "https://open-assistant.io/sitemap.xml",
-        "https://autogpt.net/sitemap.xml",
-        "https://www.deepmind.com/sitemap.xml",
-        "https://mlflow.org/sitemap.xml",
-        "https://dvc.org/sitemap.xml",
-        "https://kubeflow.org/sitemap.xml",
-        "https://www.pinecone.io/sitemap.xml"
     ]
+
+#"https://haystack.deepset.ai/sitemap.xml","https://docs.fast.ai/sitemap.xml","https://spacy.io/sitemap.xml","https://docs.ray.io/sitemap.xml","https://rasa.com/sitemap.xml","https://stability.ai/sitemap.xml","https://open-assistant.io/sitemap.xml","https://autogpt.net/sitemap.xml","https://www.deepmind.com/sitemap.xml","https://mlflow.org/sitemap.xml","https://dvc.org/sitemap.xml","https://kubeflow.org/sitemap.xml","https://www.pinecone.io/sitemap.xml"
 
     all_urls = []
     namespace = {'ns': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
